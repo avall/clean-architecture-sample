@@ -1,0 +1,60 @@
+POST http://localhost:8080/api/v1/Customer
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json; charset=utf-8
+
+{
+  "email":"a@a.com",
+  "address":"aadfadf",
+  "name":"avall",
+  "password":"ppppppppppp"
+}
+> {% client.global.set("customer_id", response.body.id); %}
+
+###
+
+POST http://localhost:8080/api/v1/Customer/auth
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json; charset=utf-8
+
+{
+  "email":"a@a.com",
+  "password":"ppppppppppp"
+}
+> {% client.global.set("auth_token", response.body.token); %}
+
+###
+
+GET http://localhost:8080/api/v1/Store
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json; charset=utf-8
+
+###
+
+POST http://localhost:8080/api/v1/Order
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json; charset=utf-8
+Authorization: Bearer {{auth_token}}
+
+{
+  "storeId":1,
+  "orderItems":[
+    {
+      "id": 1,
+      "quantity": 1
+    }
+  ]
+}
+> {% client.global.set("order_id", response.body.id); %}
+
+
+###
+
+GET http://localhost:8080/api/v1/Order/{{order_id}}
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json; charset=utf-8
+Authorization: Bearer {{auth_token}}
