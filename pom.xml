@@ -8,7 +8,7 @@
         <version>2.1.9.RELEASE</version>
     </parent>
 
-    <groupId>com.wefox</groupId>
+    <groupId>com.delivery</groupId>
     <artifactId>clean</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -65,38 +65,38 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.jfrog.buildinfo</groupId>
-                <artifactId>artifactory-maven-plugin</artifactId>
-                <version>2.6.1</version>
-                <inherited>false</inherited>
-                <executions>
-                    <execution>
-                        <id>build-info</id>
-                        <goals>
-                            <goal>publish</goal>
-                        </goals>
-                        <configuration>
-                            <artifactory>
-                                <includeEnvVars>true</includeEnvVars>
-                                <envVarsExcludePatterns>
-                                    *password*,*PASSWORD*,*secret*,*SECRET*,*key*,*KEY*,*token*,*TOKEN*
-                                </envVarsExcludePatterns>
-                                <timeoutSec>60</timeoutSec>
-                                <propertiesFile>publish.properties</propertiesFile>
-                            </artifactory>
-                            <publisher>
-                                <contextUrl>http://wgmaven.duckdns.org:8081/artifactory</contextUrl>
-                                <username>${env.MAVEN_REPO_USERNAME}</username>
-                                <password>${env.MAVEN_REPO_PASSWORD}</password>
-                                <repoKey>libs-release-local</repoKey>
-                                <snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>
-                                <excludePatterns>*app*.jar</excludePatterns>
-                            </publisher>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.jfrog.buildinfo</groupId>-->
+<!--                <artifactId>artifactory-maven-plugin</artifactId>-->
+<!--                <version>2.6.1</version>-->
+<!--                <inherited>false</inherited>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>build-info</id>-->
+<!--                        <goals>-->
+<!--                            <goal>publish</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <artifactory>-->
+<!--                                <includeEnvVars>true</includeEnvVars>-->
+<!--                                <envVarsExcludePatterns>-->
+<!--                                    *password*,*PASSWORD*,*secret*,*SECRET*,*key*,*KEY*,*token*,*TOKEN*-->
+<!--                                </envVarsExcludePatterns>-->
+<!--                                <timeoutSec>60</timeoutSec>-->
+<!--                                <propertiesFile>publish.properties</propertiesFile>-->
+<!--                            </artifactory>-->
+<!--                            <publisher>-->
+<!--                                <contextUrl>http://wgmaven.duckdns.org:8081/artifactory</contextUrl>-->
+<!--                                <username>${env.MAVEN_REPO_USERNAME}</username>-->
+<!--                                <password>${env.MAVEN_REPO_PASSWORD}</password>-->
+<!--                                <repoKey>libs-release-local</repoKey>-->
+<!--                                <snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>-->
+<!--                                <excludePatterns>*app*.jar</excludePatterns>-->
+<!--                            </publisher>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 </project>
