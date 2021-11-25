@@ -309,7 +309,8 @@ public class OrderControllerTest extends BaseControllerTest {
                 .andExpect(status().isCreated())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(header().string("location", "http://localhost/Order/" + order.getId().getNumber()))
-                .andExpect(jsonPath("$.success", is(true)))
-                .andExpect(jsonPath("$.message", is("order created successfully")));
+                .andExpect(jsonPath("$.id", is(order.getId().getNumber().intValue())))
+                .andExpect(jsonPath("$.total", is(order.getTotal())))
+        ;
     }
 }

@@ -231,9 +231,9 @@ public class CustomerControllerTest extends BaseControllerTest {
         // then
         mockMvc.perform(request)
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.success", is(true)))
+                .andExpect(jsonPath("$.id", is(customer.getId().getNumber().intValue())))
+                .andExpect(jsonPath("$.name", is(customer.getName())))
                 .andExpect(header().string("location", "http://localhost/Customer/" + customer.getId().getNumber()))
-                .andExpect(jsonPath("$.message", is("registered successfully")))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
         ;
     }
